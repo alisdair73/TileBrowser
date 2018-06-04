@@ -1,0 +1,100 @@
+<mvc:View controllerName="TileBrowserTileBrowser.controller.TileView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true" >
+						<fb:filterItems>
+							<fb:FilterItem name="A" label="Tile Name">
+								<fb:control>
+									<Input type="Text" value="{CatalogFilter>/TileName}"/>
+								</fb:control>				
+							</fb:FilterItem>
+							<fb:FilterItem name="B" label="Target Name" >
+								<fb:control>
+									<Input type="Text" value="{CatalogFilter>/TargetName}"/>
+								</fb:control>				
+							</fb:FilterItem>
+						</fb:filterItems> 
+					</fb:FilterBar>					
+					
+		<IconTabBar	
+			select="onIconTabBarSelect"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter
+				showAll="true"
+				text="Show All"
+				key="All" />
+			<IconTabSeparator/>
+			<IconTabFilter
+				icon="sap-icon://group"
+				text="Groups"
+				key="Group" />
+			<IconTabFilter
+				icon="sap-icon://course-book"
+				text="Catalogs"
+				key="Catalog" 
+			/>
+		</items>
+		<content>
+					<Table 
+						id="tableOfData"
+						items="{path: 'Catalog>/'}"
+					>
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Tile List" level="H2"/>
+							</Toolbar>
+						</headerToolbar>
+	    				<items>
+	    		        	<ColumnListItem id="__item0" vAlign="Middle">
+					            <cells>
+					                <Text text="{Catalog>Role}" />
+					                <Text text="{Catalog>Type}" />
+					                <ObjectIdentifier title="{Catalog>GroupOrCatalogName}" text="{Catalog>GroupOrCatalogId}"/>
+					                <Text text="{Catalog>Tile}" />
+					                <ObjectIdentifier title="{Catalog>Target}" text="{Catalog>Navigation}"/>
+					            </cells>
+					        </ColumnListItem>
+					    </items>		
+					    <columns>
+					        <Column width="20em">
+					            <header>
+					                <Label text="Role"/>
+					            </header>
+					        </Column>
+					        <Column width="5em">
+					            <header>
+					                <Label text="Type"/>
+					            </header>
+					        </Column>
+					        <Column width="35em">
+					            <header>
+					                <Label text="Group or Catalog Name"/>
+					            </header>
+					        </Column>
+					        <Column>
+					            <header>
+					                <Label text="Tile"/>
+					            </header>
+					        </Column>
+							<Column>
+					            <header>
+					                <Label text="Target/Navigation"/>
+					            </header>
+					        </Column>
+					     </columns>
+					 </Table>
+				</content>
+			</IconTabBar>				
+
+					 
+					 
+					 
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
